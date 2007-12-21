@@ -8,6 +8,7 @@ URL:		http://www.fefe.de/
 Source0:	http://www.fefe.de/embutils/%{name}-%{version}.tar.bz2
 Source1:	http://www.fefe.de/embutils/%{name}-%{version}.tar.bz2.sig
 BuildRequires:	dietlibc-devel >= 0.20-1mdk
+BuildRoot:	%{_tmppath}/%{name}-buildroot
 Prefix:		%{_libdir}/%{name}
 
 %description
