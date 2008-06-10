@@ -1,15 +1,15 @@
 Summary:	Small system utilities for embedded systems
 Name:		embutils
 Version:	0.17
-Release:	%mkrel 2
+Release:	%mkrel 3
 License:	GPL
 Group:		System/Base
 URL:		http://www.fefe.de/
 Source0:	http://www.fefe.de/embutils/%{name}-%{version}.tar.bz2
 Source1:	http://www.fefe.de/embutils/%{name}-%{version}.tar.bz2.sig
-BuildRequires:	dietlibc-devel >= 0.20-1mdk
-BuildRoot:	%{_tmppath}/%{name}-buildroot
+BuildRequires:	dietlibc-devel >= 0.32
 Prefix:		%{_libdir}/%{name}
+BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 Most of the typical Unix userland typically comes from either the
@@ -35,7 +35,7 @@ to create very small statically linked binaries.
 make
 
 %install
-[ "%{buildroot}" != "/" ] && rm -rf %{buildroot}
+rm -rf %{buildroot}
 
 install -d %{buildroot}%{prefix}/bin
 
@@ -47,7 +47,7 @@ ln -snf mv %{buildroot}%{prefix}/bin/cp
 ln -snf mknod %{buildroot}%{prefix}/bin/mkfifo
 
 %clean
-[ "%{buildroot}" != "/" ] && rm -rf %{buildroot}
+rm -rf %{buildroot}
 
 %files
 %defattr(-,root,root)
@@ -127,5 +127,3 @@ ln -snf mknod %{buildroot}%{prefix}/bin/mkfifo
 %{prefix}/bin/lsmod
 %{prefix}/bin/pivot_root
 %{prefix}/bin/rmmod
-
-
