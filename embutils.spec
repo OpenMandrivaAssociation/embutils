@@ -1,7 +1,7 @@
 Summary:	Small system utilities for embedded systems
 Name:		embutils
-Version:	0.17
-Release:	%mkrel 3
+Version:	0.19
+Release:	%mkrel 1
 License:	GPL
 Group:		System/Base
 URL:		http://www.fefe.de/
@@ -32,7 +32,7 @@ to create very small statically linked binaries.
 
 %build
 
-make
+make FLAGS="-DPAGE_SIZE=\"`getconf PAGE_SIZE`\""
 
 %install
 rm -rf %{buildroot}
@@ -60,10 +60,12 @@ rm -rf %{buildroot}
 %{prefix}/bin/chmod
 %{prefix}/bin/chown
 %{prefix}/bin/chroot
+%{prefix}/bin/chrootuid
 %{prefix}/bin/chvt
 %{prefix}/bin/clear
 %{prefix}/bin/cmp
 %{prefix}/bin/cp
+%{prefix}/bin/date
 %{prefix}/bin/dd
 %{prefix}/bin/df
 %{prefix}/bin/dirname
@@ -76,22 +78,29 @@ rm -rf %{buildroot}
 %{prefix}/bin/head
 %{prefix}/bin/hostname
 %{prefix}/bin/id
+%{prefix}/bin/insmod
 %{prefix}/bin/install
 %{prefix}/bin/kill
 %{prefix}/bin/ln
 %{prefix}/bin/ls
+%{prefix}/bin/lsmod
 %{prefix}/bin/md5sum
 %{prefix}/bin/mesg
 %{prefix}/bin/mkdir
 %{prefix}/bin/mkfifo
 %{prefix}/bin/mknod
 %{prefix}/bin/mktemp
+%{prefix}/bin/mount
 %{prefix}/bin/mv
 %{prefix}/bin/nice
 %{prefix}/bin/nohup
+%{prefix}/bin/pivot_root
+%{prefix}/bin/printenv
 %{prefix}/bin/pwd
+%{prefix}/bin/renice
 %{prefix}/bin/rm
 %{prefix}/bin/rmdir
+%{prefix}/bin/rmmod
 %{prefix}/bin/sleep
 %{prefix}/bin/sleep2
 %{prefix}/bin/soscp
@@ -99,15 +108,19 @@ rm -rf %{buildroot}
 %{prefix}/bin/soslns
 %{prefix}/bin/sosmv
 %{prefix}/bin/sosrm
+%{prefix}/bin/strings
 %{prefix}/bin/sync
 %{prefix}/bin/tail
 %{prefix}/bin/tar
 %{prefix}/bin/tee
+%{prefix}/bin/test
+%{prefix}/bin/time
 %{prefix}/bin/touch
 %{prefix}/bin/tr
 %{prefix}/bin/true
 %{prefix}/bin/truncate
 %{prefix}/bin/tty
+%{prefix}/bin/umount
 %{prefix}/bin/uname
 %{prefix}/bin/uniq
 %{prefix}/bin/uudecode
@@ -117,13 +130,3 @@ rm -rf %{buildroot}
 %{prefix}/bin/whoami
 %{prefix}/bin/write
 %{prefix}/bin/yes
-%{prefix}/bin/strings
-%{prefix}/bin/test
-%{prefix}/bin/date
-%{prefix}/bin/mount
-%{prefix}/bin/umount
-%{prefix}/bin/printenv
-%{prefix}/bin/insmod
-%{prefix}/bin/lsmod
-%{prefix}/bin/pivot_root
-%{prefix}/bin/rmmod
