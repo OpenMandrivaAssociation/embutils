@@ -1,7 +1,7 @@
 Summary:	Small system utilities for embedded systems
 Name:		embutils
 Version:	0.19
-Release:	%mkrel 1
+Release:	%mkrel 2
 License:	GPL
 Group:		System/Base
 URL:		http://www.fefe.de/
