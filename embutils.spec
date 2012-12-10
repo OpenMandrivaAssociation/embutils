@@ -130,3 +130,46 @@ rm -rf %{buildroot}
 %{prefix}/bin/whoami
 %{prefix}/bin/write
 %{prefix}/bin/yes
+
+
+%changelog
+* Thu Dec 09 2010 Oden Eriksson <oeriksson@mandriva.com> 0.19-4mdv2011.0
++ Revision: 618223
+- the mass rebuild of 2010.0 packages
+
+* Thu Sep 03 2009 Thierry Vignaud <tv@mandriva.org> 0.19-3mdv2010.0
++ Revision: 428591
+- rebuild
+
+* Thu Aug 07 2008 Thierry Vignaud <tv@mandriva.org> 0.19-2mdv2009.0
++ Revision: 266621
+- rebuild early 2009.0 package (before pixel changes)
+
+* Wed Jun 11 2008 Oden Eriksson <oeriksson@mandriva.com> 0.19-1mdv2009.0
++ Revision: 217972
+- 0.19
+- fix build
+- rebuilt against dietlibc-devel-0.32
+
+  + Olivier Blin <oblin@mandriva.com>
+    - restore BuildRoot
+
+  + Thierry Vignaud <tv@mandriva.org>
+    - kill re-definition of %%buildroot on Pixel's request
+
+
+* Fri Dec 22 2006 Oden Eriksson <oeriksson@mandriva.com> 0.17-2mdv2007.0
++ Revision: 101723
+- Import embutils
+
+* Sat Apr 29 2006 Oden Eriksson <oeriksson@mandriva.com> 0.17-2mdk
+- rebuild
+
+* Tue Feb 01 2005 Oden Eriksson <oeriksson@mandrakesoft.com> 0.17-1mdk
+- 0.17
+- added date, mount, umount, printenv, insmod, lsmod, pivot_root, rmmod
+- drop P0, seems integrated upstream and it compiles fine without it
+
+* Mon Nov 01 2004 Christiaan Welvaart <cjw@daneel.dyndns.org> 0.16-2mdk
+- patch0: fix build with gcc 3.4
+
