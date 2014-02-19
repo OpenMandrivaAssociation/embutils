@@ -1,15 +1,17 @@
+%define _enable_debug_packages %{nil}
+%define debug_package %{nil}
+
 Summary:	Small system utilities for embedded systems
 Name:		embutils
 Version:	0.19
-Release:	%mkrel 4
-License:	GPL
+Release:	5
+License:	GPLv2+
 Group:		System/Base
-URL:		http://www.fefe.de/
+Url:		http://www.fefe.de/
 Source0:	http://www.fefe.de/embutils/%{name}-%{version}.tar.bz2
 Source1:	http://www.fefe.de/embutils/%{name}-%{version}.tar.bz2.sig
-BuildRequires:	dietlibc-devel >= 0.32
+BuildRequires:	dietlibc-devel
 Prefix:		%{_libdir}/%{name}
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 Most of the typical Unix userland typically comes from either the
@@ -26,31 +28,7 @@ few important typical userland programs that I need on boot and
 rescue disks, making sure that you can link it against diet libc
 to create very small statically linked binaries.
 
-%prep
-
-%setup -q
-
-%build
-
-make FLAGS="-DPAGE_SIZE=\"`getconf PAGE_SIZE`\""
-
-%install
-rm -rf %{buildroot}
-
-install -d %{buildroot}%{prefix}/bin
-
-make DESTDIR="%{buildroot}%{prefix}" prefix="" install
-
-# fix softlinks...
-ln -snf chown %{buildroot}%{prefix}/bin/chgrp
-ln -snf mv %{buildroot}%{prefix}/bin/cp
-ln -snf mknod %{buildroot}%{prefix}/bin/mkfifo
-
-%clean
-rm -rf %{buildroot}
-
 %files
-%defattr(-,root,root)
 %doc CHANGES TODO
 %{prefix}/bin/allinone
 %{prefix}/bin/arch
@@ -131,45 +109,21 @@ rm -rf %{buildroot}
 %{prefix}/bin/write
 %{prefix}/bin/yes
 
+#----------------------------------------------------------------------------
 
-%changelog
-* Thu Dec 09 2010 Oden Eriksson <oeriksson@mandriva.com> 0.19-4mdv2011.0
-+ Revision: 618223
-- the mass rebuild of 2010.0 packages
+%prep
+%setup -q
 
-* Thu Sep 03 2009 Thierry Vignaud <tv@mandriva.org> 0.19-3mdv2010.0
-+ Revision: 428591
-- rebuild
+%build
+make FLAGS="-DPAGE_SIZE=\"`getconf PAGE_SIZE`\""
 
-* Thu Aug 07 2008 Thierry Vignaud <tv@mandriva.org> 0.19-2mdv2009.0
-+ Revision: 266621
-- rebuild early 2009.0 package (before pixel changes)
+%install
+install -d %{buildroot}%{prefix}/bin
 
-* Wed Jun 11 2008 Oden Eriksson <oeriksson@mandriva.com> 0.19-1mdv2009.0
-+ Revision: 217972
-- 0.19
-- fix build
-- rebuilt against dietlibc-devel-0.32
+make DESTDIR="%{buildroot}%{prefix}" prefix="" install
 
-  + Olivier Blin <oblin@mandriva.com>
-    - restore BuildRoot
-
-  + Thierry Vignaud <tv@mandriva.org>
-    - kill re-definition of %%buildroot on Pixel's request
-
-
-* Fri Dec 22 2006 Oden Eriksson <oeriksson@mandriva.com> 0.17-2mdv2007.0
-+ Revision: 101723
-- Import embutils
-
-* Sat Apr 29 2006 Oden Eriksson <oeriksson@mandriva.com> 0.17-2mdk
-- rebuild
-
-* Tue Feb 01 2005 Oden Eriksson <oeriksson@mandrakesoft.com> 0.17-1mdk
-- 0.17
-- added date, mount, umount, printenv, insmod, lsmod, pivot_root, rmmod
-- drop P0, seems integrated upstream and it compiles fine without it
-
-* Mon Nov 01 2004 Christiaan Welvaart <cjw@daneel.dyndns.org> 0.16-2mdk
-- patch0: fix build with gcc 3.4
+# fix softlinks...
+ln -snf chown %{buildroot}%{prefix}/bin/chgrp
+ln -snf mv %{buildroot}%{prefix}/bin/cp
+ln -snf mknod %{buildroot}%{prefix}/bin/mkfifo
 
