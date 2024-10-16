@@ -7,7 +7,7 @@ Version:	0.19
 Release:	6
 License:	GPLv2+
 Group:		System/Base
-Url:		http://www.fefe.de/
+Url:		https://www.fefe.de/
 Source0:	http://www.fefe.de/embutils/%{name}-%{version}.tar.bz2
 Source1:	http://www.fefe.de/embutils/%{name}-%{version}.tar.bz2.sig
 BuildRequires:	dietlibc-devel
