@@ -10,6 +10,7 @@ Group:		System/Base
 Url:		https://www.fefe.de/
 Source0:	http://www.fefe.de/embutils/%{name}-%{version}.tar.bz2
 Source1:	http://www.fefe.de/embutils/%{name}-%{version}.tar.bz2.sig
+BuildRequires:	make
 BuildRequires:	dietlibc-devel
 Prefix:		%{_libdir}/%{name}
 
